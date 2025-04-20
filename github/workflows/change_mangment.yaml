@@ -3,7 +3,7 @@ name: "Terraform Change Mangment piepline"
 on:
   push:
     branches:
-      - main:
+      - master:
 
 concurrency:
   # validate the old workflow and unit ID
