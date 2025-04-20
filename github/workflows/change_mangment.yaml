@@ -63,7 +63,18 @@ jobs:
         -var "region=$AWS_REGION"" \
         -var "control_plane_subnet_ids=$CONTROL"
 
-    - name: Apply Stage of the terraform
+    # Security Enchanment and scanning Tools for the IaC code checkov
+    - name: Checkov GitHub Action
+      uses: bridgecrewio/checkov-action@v12
+      with:
+        # This will add both a CLI output to the console and create a results.sarif file
+        output_format: cli,sarif
+        output_file_path: console,results.sarif
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+
+    - name: Apply Terraform changes
       #apply steps is execute when there is changed on the plan stage
       if: steps.plan.outputs.summary != 'No changes. Everything  is update to date.'
       run: terraform apply --auto-approve
