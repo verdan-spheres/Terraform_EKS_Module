@@ -10,3 +10,5 @@ terraform {
 
   }
 }
+
+# Terraform level block cannot variablied whatever can be injected the vaue form the github secrect value in Github action runner 

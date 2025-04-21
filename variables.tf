@@ -5,6 +5,7 @@ variable "region" {
 
 }
 
+#the value is injected from the github action 
 variable "cluster_name" {
   type        = string
   description = "Name of the Cluster"
@@ -22,8 +23,7 @@ variable "subnet_ids" {
 }
 
 variable "control_plane_subnet_ids" {
-  type = list(string) // ["subnet-xyzde987", "subnet-slkjf456", "subnet-qeiru789"]
-
+  type        = list(string) // ["subnet-xyzde987", "subnet-slkjf456", "subnet-qeiru789"]
   description = "Control Plane Subnet ID"
 }
 

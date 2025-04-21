@@ -33,9 +33,11 @@ module "eks" {
   subnet_ids               = var.subnet_ids
   control_plane_subnet_ids = var.control_plane_subnet_ids
 
-  # EKS Managed Node Group(s)
+
+  #For the cluster auto scaller used the manged node group 
+  # EKS Managed Node Group(s) 
   eks_managed_node_group_defaults = {
-    instance_types = ["m6i.large", "m5.large", "m5n.large", "m5zn.large"]
+    instance_types = ["t3.medium"]
   }
 
   eks_managed_node_groups = {
